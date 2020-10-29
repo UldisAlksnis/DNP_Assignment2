@@ -6,11 +6,11 @@ namespace Assignment1.Data
 {
     public interface IAdultService
     {
-        IList<Adult> GetAdults();
-        void AddAdult(Adult adult);
-        void EditAdult(Adult adult);
-        Adult GetById(int Id);
-        void UpdateAdult(Adult adultToUpdate);
-        void RemoveAdult(int id);
+        Task<IList<Adult>> GetAdults();
+        Task AddAdultAsync(Adult adult);
+        Task EditAdultAsync(Adult adult);
+        Task<Adult> GetById(int Id);
+        Task UpdateAdultAsync(Adult adultToUpdate);
+        Task RemoveAdultAsync(int id);
     }
 }

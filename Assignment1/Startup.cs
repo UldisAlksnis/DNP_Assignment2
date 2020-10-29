@@ -54,7 +54,7 @@ namespace Assignment1
                 }));
             });
             //Persons...
-            services.AddSingleton<IAdultService, AdultService>();
+            services.AddSingleton<IAdultService, CloudAdultService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

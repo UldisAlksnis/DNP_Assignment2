@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Assignment1.Models;
+using System.Threading.Tasks;
 
 namespace Assignment1.Data
 {
@@ -28,15 +29,16 @@ namespace Assignment1.Data
             }
         }
 
-        public IList<Adult> GetAdults()
+        public async Task<IList<Adult>> GetAdults()
         {
             List<Adult> tmp2 = new List<Adult>(adults);
             return tmp2;
         }
 
-        public Adult GetById(int id)
-        { 
-            foreach (var item in GetAdults())
+        public async Task<Adult> GetById(int id)
+        {
+            List<Adult> tmp2 = new List<Adult>(adults);
+            foreach (var item in tmp2)
             {
                 if (item.Id == id)
                 {
@@ -48,7 +50,7 @@ namespace Assignment1.Data
             return null;
         }
 
-        public void AddAdult(Adult adult)
+        public async Task AddAdultAsync(Adult adult)
         {
             var max = adults.Max(adult => adult.Id);
             adult.Id = ++max;
@@ -56,7 +58,7 @@ namespace Assignment1.Data
             WritePersonsToFile();
         }
         
-        public void EditAdult(Adult adult)
+        public async Task EditAdultAsync(Adult adult)
         {
             adult.Update(adult);
             
@@ -67,7 +69,7 @@ namespace Assignment1.Data
             var productsAsJson = JsonSerializer.Serialize(adults);
             File.WriteAllText(adultFile, productsAsJson);
         }
-        public void RemoveAdult(int Id)
+        public async Task RemoveAdultAsync(int Id)
         {
             var toRemove = adults.First(t => t.Id == Id);
             adults.Remove(toRemove);
@@ -114,7 +116,7 @@ namespace Assignment1.Data
             File.WriteAllText(adultFile, productsAsJson);
         }
 
-        public void UpdateAdult(Adult adultToUpdate)
+        public async Task UpdateAdultAsync(Adult adultToUpdate)
         {
             foreach (var item in adults)
             {

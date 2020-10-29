@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.VisualBasic.CompilerServices;
 
@@ -12,6 +13,7 @@ namespace Assignment1.Models
     {
         [NotNull]
         [ValidJobTitle]
+        [JsonPropertyName("jobTitle")]
         public string JobTitle { get; set; }
         
         public override string ToString()

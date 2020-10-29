@@ -60,7 +60,7 @@ else
     
     protected override async Task OnInitializedAsync()
     {
-        allAdults = AdultService.GetAdults();
+        allAdults = await AdultService.GetAdults();
         adultsToShow = allAdults;
     }
     

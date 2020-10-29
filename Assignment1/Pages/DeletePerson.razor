@@ -13,7 +13,7 @@
     
     protected override async Task OnInitializedAsync()
     {
-        await Task.Run(() => AdultService.RemoveAdult(id));
+        await AdultService.RemoveAdultAsync(id);
         await Task.Run(() => Navigate());
 
     }

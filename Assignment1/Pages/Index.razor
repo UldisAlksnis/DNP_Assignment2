@@ -32,8 +32,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        await Task.Run(() => adults = AdultService.GetAdults());
-
+        adults = await AdultService.GetAdults();
     }
 
     public class ValidFilter : ValidationAttribute

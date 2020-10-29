@@ -5,7 +5,7 @@
 @inject NavigationManager NavigationManager
 <h3>Edit Adult</h3>
 <EditForm Model="@adultToEdit" OnValidSubmit="@UpdateAdult">
-            <DataAnnotationsValidator />
+                                        <DataAnnotationsValidator />
             <ValidationSummary />
 <div class="form-group">
         First Name:<br />
@@ -33,18 +33,17 @@
 
     public string error = "";
 
-    private Adult adultToEdit;
+    private Adult adultToEdit = new Adult();
     
     protected override async Task OnInitializedAsync()
     {
-        await Task.Run(() => adultToEdit = AdultService.GetById(id));
-
+        adultToEdit = await AdultService.GetById(id);
     }
 
     private async Task UpdateAdult()
     {
-        await Task.Run(() => AdultService.UpdateAdult(adultToEdit));
-            await Task.Run(() => Navigate());
+        await AdultService.UpdateAdultAsync(adultToEdit);
+        await Navigate();
 
     }
 

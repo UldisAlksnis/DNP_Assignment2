@@ -76,9 +76,9 @@
     @code {
         private readonly Adult newAdult = new Adult();
 
-        private void AddNewAdult()
+        private async Task AddNewAdult()
         {
-            AdultService.AddAdult(newAdult);
+            await AdultService.AddAdultAsync(newAdult);
             NavigationManager.NavigateTo("/", true);
         }
 
